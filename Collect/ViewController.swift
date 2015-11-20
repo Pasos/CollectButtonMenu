@@ -23,22 +23,20 @@ class ViewController: UIViewController {
         roundedButton(button: b5Button)
         roundedButton(button: b6Button)
         
-        collectBM1 = CollectButtonMenu(frame: CGRectMake(310, 600, 50, 50), viewcontroller: self)
-        collectBM1.locatetype = 5
-        collectBM1.near_distance = 50
+        collectBM1 = CollectButtonMenu(frame: CGRectMake(310, 600, 50, 50), color: UIColor.purpleColor(), viewcontroller: self)
+        collectBM1.LOCATE_TYPE = 5
+        collectBM1.NEAR_DISTANCE = 50
         collectBM1.add(button: b1Button, actiontype: UIControlEvents.TouchUpInside)
         collectBM1.add(button: b2Button, actiontype: UIControlEvents.TouchUpInside)
         collectBM1.add(button: b3Button, actiontype: UIControlEvents.TouchUpInside)
         self.view.addSubview(collectBM1)
         
-        collectBM2 = CollectButtonMenu(frame: CGRectMake(310, 400, 50, 50), viewcontroller: self)
-        collectBM2.locatetype = 2
-        collectBM2.near_distance = 50
-        collectBM2.add(button: b1Button, actiontype: UIControlEvents.TouchUpInside)
-        collectBM2.add(button: b2Button, actiontype: UIControlEvents.TouchUpInside)
-        collectBM2.add(button: b3Button, actiontype: UIControlEvents.TouchUpInside)
+        collectBM2 = CollectButtonMenu(frame: CGRectMake(310, 400, 50, 50), color: UIColor.redColor(), viewcontroller: self)
+        collectBM2.LOCATE_TYPE = 2
+        collectBM2.NEAR_DISTANCE = 70
         collectBM2.add(button: b4Button, actiontype: UIControlEvents.TouchUpInside)
         collectBM2.add(button: b5Button, actiontype: UIControlEvents.TouchUpInside)
+        collectBM2.add(button: b6Button, actiontype: UIControlEvents.TouchUpInside)
         self.view.addSubview(collectBM2)
     }
 

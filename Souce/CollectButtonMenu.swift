@@ -13,12 +13,15 @@ class CollectButtonMenu: HamburgerButton{
     
     var targets:[TargetButton] = []                     //集めるボタン格納
     var collectstate:Bool = false                       //集めているかの状態
-    var near_distance:CGFloat = 40                      //どれぐらい近くに配置するか
-    var locatetype:Int = 0 //["All":0, "Up":1, "Left":2, "Right":3, "Down":4, "UpLeft":5, "UpRight":6, "DownLeft":7, "DownRight":8]//配置するタイプ
     var viewCon:UIViewController! = nil
     
-    init(frame _frame:CGRect, viewcontroller _viewCon:UIViewController ){
-        super.init(frame: _frame)
+    var NEAR_DISTANCE:CGFloat = 40                      //どれぐらい近くに配置するか
+    var BUTTON_COLOR:UIColor = UIColor.redColor()       //ドラッグ時に染める色
+    var LOCATE_TYPE:Int = 0 //["All":0, "Up":1, "Left":2, "Right":3, "Down":4, "UpLeft":5, "UpRight":6, "DownLeft":7, "DownRight":8]//配置するタイプ
+    
+    init(frame _frame:CGRect, color _color:UIColor, viewcontroller _viewCon:UIViewController ){
+        super.init(frame: _frame, color: _color)
+        BUTTON_COLOR = _color
         viewCon = _viewCon
     }
     
@@ -70,7 +73,7 @@ class CollectButtonMenu: HamburgerButton{
                 target.button.sendActionsForControlEvents(.TouchUpInside)//
                 UIView.animateWithDuration(0.3, delay: 0.8, options: UIViewAnimationOptions(),                    animations: {() -> Void  in
                         target.button.transform = CGAffineTransformMakeScale(1, 1);
-                        target.button.backgroundColor = UIColor.greenColor()
+                        target.button.backgroundColor = target.origin_color
                     }
                     ,completion: {(finished: Bool) -> Void in
                     }
@@ -78,7 +81,7 @@ class CollectButtonMenu: HamburgerButton{
             }else{
                 //ボタンの形を元に戻す。
                 target.button.transform = CGAffineTransformMakeScale(1, 1);
-                target.button.backgroundColor = UIColor.greenColor()
+                target.button.backgroundColor = target.origin_color
             }
         }
         //ボタンを元の位置に戻す。
@@ -100,14 +103,14 @@ class CollectButtonMenu: HamburgerButton{
                     animations: {() -> Void  in
                         // アニメーションする処理
                         target.button.transform = CGAffineTransformMakeScale(1.3, 1.3);
-                        target.button.backgroundColor = UIColor.redColor()
+                        target.button.backgroundColor = self.BUTTON_COLOR
                 })
             }else{
                 UIView.animateWithDuration(0.3, // アニメーションの時間
                     animations: {() -> Void  in
                         // アニメーションする処理
                         target.button.transform = CGAffineTransformMakeScale(1, 1);
-                        target.button.backgroundColor = UIColor.greenColor()
+                        target.button.backgroundColor = target.origin_color
                 })
             }
         }
@@ -121,6 +124,7 @@ class CollectButtonMenu: HamburgerButton{
         for target in targets {
             target.origin_x = target.button.layer.position.x
             target.origin_y = target.button.layer.position.y
+            target.origin_color = target.button.backgroundColor!
         }
         //ボタン移動
         locate()
@@ -146,8 +150,8 @@ class CollectButtonMenu: HamburgerButton{
             UIView.animateWithDuration(0.8, // アニメーションの時間
                 animations: {() -> Void  in
                     // アニメーションする処理
-                    target.button.layer.position.x = self.layer.position.x + self.near_distance*CGFloat(cos(self.locateangle(i)))
-                    target.button.layer.position.y = self.layer.position.y + self.near_distance*CGFloat(sin(self.locateangle(i)))
+                    target.button.layer.position.x = self.layer.position.x + self.NEAR_DISTANCE*CGFloat(cos(self.locateangle(i)))
+                    target.button.layer.position.y = self.layer.position.y + self.NEAR_DISTANCE*CGFloat(sin(self.locateangle(i)))
             })
             i += 1
         }
@@ -155,7 +159,7 @@ class CollectButtonMenu: HamburgerButton{
     
     func locateangle(i:Int) -> Double{
         var direction:Double = 0
-        if(locatetype == 0){
+        if(LOCATE_TYPE == 0){
             direction = 2*M_PI/Double(targets.count)*Double(i)
         }else{
             if(targets.count != 1){
@@ -165,7 +169,7 @@ class CollectButtonMenu: HamburgerButton{
             }
         }
 
-        switch locatetype {
+        switch LOCATE_TYPE {
             case 1://Up
                 direction = direction/2 + M_PI
             case 2://Left
@@ -197,11 +201,13 @@ class TargetButton {
     var button:UIButton
     var origin_x:CGFloat
     var origin_y:CGFloat
+    var origin_color:UIColor
     
     init(button _button:UIButton){
         button = _button
         origin_x = _button.layer.position.x
         origin_y = _button.layer.position.y
+        origin_color = _button.backgroundColor!
     }
     
 }
