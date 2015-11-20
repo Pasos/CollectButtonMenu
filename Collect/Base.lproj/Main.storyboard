@@ -1,25 +1,92 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Collect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsG-Xk-tRc">
+                                <rect key="frame" x="263" y="191" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.11478173640834977" green="1" blue="0.47359341223503759" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="B1"/>
+                                <connections>
+                                    <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c3Z-Zz-VyZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pn-Ml-vuf">
+                                <rect key="frame" x="42" y="496" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.1147817364" green="1" blue="0.47359341220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="B4"/>
+                                <connections>
+                                    <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oge-e0-wx8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4q-Pw-lCA">
+                                <rect key="frame" x="70" y="594" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.1147817364" green="1" blue="0.47359341220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="B5"/>
+                                <connections>
+                                    <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OdN-8N-35P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIA-uR-whZ">
+                                <rect key="frame" x="62" y="348" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.1147817364" green="1" blue="0.47359341220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="B3"/>
+                                <connections>
+                                    <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="li7-56-kZM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1O-kq-len">
+                                <rect key="frame" x="315" y="520" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.1147817364" green="1" blue="0.47359341220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="B6"/>
+                                <connections>
+                                    <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hRK-RA-26a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATc-9Q-aXh">
+                                <rect key="frame" x="172" y="237" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.1147817364" green="1" blue="0.47359341220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="B2"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds " value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius ">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qUX-tu-CmW"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="b1Button" destination="TsG-Xk-tRc" id="DdW-FM-h3B"/>
+                        <outlet property="b2Button" destination="ATc-9Q-aXh" id="hGG-rJ-F7A"/>
+                        <outlet property="b3Button" destination="VIA-uR-whZ" id="QFt-TY-unh"/>
+                        <outlet property="b4Button" destination="8pn-Ml-vuf" id="ofQ-Bi-lWA"/>
+                        <outlet property="b5Button" destination="S4q-Pw-lCA" id="hSV-g2-zMK"/>
+                        <outlet property="b6Button" destination="D1O-kq-len" id="Idy-A1-ked"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="244.5" y="349.5"/>
         </scene>
     </scenes>
 </document>
