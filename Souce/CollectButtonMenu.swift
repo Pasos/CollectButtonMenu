@@ -12,8 +12,8 @@ import UIKit
 public class CollectButtonMenu: HamburgerButton{
     
     var targets:[TargetButton] = []                     //集めるボタン格納
-    var collect_state:Bool = false                       //集めているかの状態
-    var view_con:UIViewController! = nil                 //親のViewController格納
+    var collect_state:Bool = false                      //集めているかの状態
+    var view_controller:UIViewController! = nil         //親のViewController格納
     enum locate_name {                                  //配置タイプ名
         case All
         case Up
@@ -30,10 +30,10 @@ public class CollectButtonMenu: HamburgerButton{
     var BUTTON_COLOR:UIColor = UIColor.redColor()       //ドラッグ時に染める色
     var LOCATE_TYPE: locate_name = locate_name.All      //配置するタイプ
     
-    init(frame _frame:CGRect, color _color:UIColor, viewcontroller _viewCon:UIViewController ){
+    init(frame _frame:CGRect, color _color:UIColor, view_controller _view_controller:UIViewController ){
         super.init(frame: _frame, color: _color)
         BUTTON_COLOR = _color
-        view_con = _viewCon
+        view_controller = _view_controller
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -41,8 +41,9 @@ public class CollectButtonMenu: HamburgerButton{
     }
     
     //集めるボタングループに追加
-    func add(button _button:UIButton, actiontype _actiontype:UIControlEvents) {
-        targets.append(TargetButton(button: _button))
+    func add(button _button:UIButton, actiontype _action_type:[UIControlEvents]) {
+        targets.append(TargetButton(button: _button, action_event: _action_type))
+        
     }
     
     //集めるボタングループから除外
@@ -82,13 +83,15 @@ public class CollectButtonMenu: HamburgerButton{
         
         //タッチ位置取得
         let aTouch = touches.first
-        let location = aTouch!.locationInView(view_con.view)
+        let location = aTouch!.locationInView(view_controller.view)
         
         for target in targets {
             if(target.button.frame.contains(location)){
-                target.button.sendActionsForControlEvents(.TouchUpInside)//
+                for action_event in target.action_events {
+                    target.button.sendActionsForControlEvents(action_event)
+                }
                 UIView.animateWithDuration(0.3, delay: 0.8, options: UIViewAnimationOptions(),                    animations: {() -> Void  in
-                        target.button.transform = CGAffineTransformMakeScale(1, 1);
+                        target.button.transform = CGAffineTransformMakeScale(1, 1)
                         target.button.backgroundColor = target.origin_color
                     }
                     ,completion: {(finished: Bool) -> Void in
@@ -107,7 +110,7 @@ public class CollectButtonMenu: HamburgerButton{
         // タッチイベントを取得.
         let aTouch = touches.first
         // 移動した先の座標を取得.
-        let location = aTouch!.locationInView(view_con.view)
+        let location = aTouch!.locationInView(view_controller.view)
 
         for target in targets {
             if(target.button.frame.contains(location)){
@@ -134,8 +137,8 @@ public class CollectButtonMenu: HamburgerButton{
     func collect(){
         //ボタンの元の位置記録
         for target in targets {
-            target.origin_x = target.button.layer.position.x
-            target.origin_y = target.button.layer.position.y
+            target.origin_point.x = target.button.layer.position.x
+            target.origin_point.y = target.button.layer.position.y
             if let color = target.button.backgroundColor {
                 target.origin_color = color
             }else{
@@ -159,8 +162,7 @@ public class CollectButtonMenu: HamburgerButton{
         for target in targets {
             UIView.animateWithDuration(0.8,
                 animations: {() -> Void  in
-                    target.button.layer.position.x = target.origin_x
-                    target.button.layer.position.y = target.origin_y
+                    target.button.layer.position = target.origin_point
             })
         }
     }
@@ -207,20 +209,20 @@ public class CollectButtonMenu: HamburgerButton{
 
 class TargetButton {
     
-    var button:UIButton     //ボタン本体
-    var origin_x:CGFloat    //元のx座標
-    var origin_y:CGFloat    //元のy座標
-    var origin_color:UIColor//元の背景色
+    var button:UIButton                //ボタン本体
+    var origin_point:CGPoint           //元の座標
+    var origin_color:UIColor           //元の背景色
+    var action_events:[UIControlEvents]//起こすタッチアクション
     
-    init(button _button:UIButton){
+    init(button _button:UIButton, action_event _action_event:[UIControlEvents]){
         button = _button
-        origin_x = _button.layer.position.x
-        origin_y = _button.layer.position.y
+        origin_point = _button.layer.position
         if let color = _button.backgroundColor {
             origin_color = color
         }else{
             origin_color = UIColor.clearColor()
         }
+        action_events = _action_event
     }
     
 }
