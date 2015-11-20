@@ -9,24 +9,34 @@
 import Foundation
 import UIKit
 
-class CollectButtonMenu: HamburgerButton{
+public class CollectButtonMenu: HamburgerButton{
     
     var targets:[TargetButton] = []                     //集めるボタン格納
-    var collectstate:Bool = false                       //集めているかの状態
-    var viewCon:UIViewController! = nil                 //親のViewController格納
-    var locate_name:Dictionary<String, Int> = ["All":0, "Up":1, "Left":2, "Right":3, "Down":4, "UpLeft":5, "UpRight":6, "DownLeft":7, "DownRight":8]       //配置タイプ名
+    var collect_state:Bool = false                       //集めているかの状態
+    var view_con:UIViewController! = nil                 //親のViewController格納
+    enum locate_name {                                  //配置タイプ名
+        case All
+        case Up
+        case Left
+        case Right
+        case Down
+        case UpLeft
+        case UpRight
+        case DownLeft
+        case DownRight
+    }
     
     var NEAR_DISTANCE:CGFloat = 40                      //どれぐらい近くに配置するか
     var BUTTON_COLOR:UIColor = UIColor.redColor()       //ドラッグ時に染める色
-    var LOCATE_TYPE:Int = 0                             //配置するタイプ
+    var LOCATE_TYPE: locate_name = locate_name.All      //配置するタイプ
     
     init(frame _frame:CGRect, color _color:UIColor, viewcontroller _viewCon:UIViewController ){
         super.init(frame: _frame, color: _color)
         BUTTON_COLOR = _color
-        viewCon = _viewCon
+        view_con = _viewCon
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -46,11 +56,6 @@ class CollectButtonMenu: HamburgerButton{
         }
     }
     
-    //文字列で配置タイプを指定
-    func setLocateType(_typeString:String){
-        LOCATE_TYPE = locate_name[_typeString]!
-    }
-    
     //グループに入っているボタンかどうか指定
     func is_exist(button _button:UIButton)-> Bool{
         for target in targets {
@@ -64,20 +69,20 @@ class CollectButtonMenu: HamburgerButton{
     //☆タッチイベント
     
     //ドラッグ開始
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         collect()
-        collectstate = true
+        collect_state = true
         self.showsMenu = !self.showsMenu//★ハンバーガー継承の場合
     }
     
     //ドラッグ終了
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
         //ボタンのタッチ関数呼び出し
         
         //タッチ位置取得
         let aTouch = touches.first
-        let location = aTouch!.locationInView(viewCon.view)
+        let location = aTouch!.locationInView(view_con.view)
         
         for target in targets {
             if(target.button.frame.contains(location)){
@@ -93,16 +98,16 @@ class CollectButtonMenu: HamburgerButton{
         }
         //ボタンを元の位置に戻す。
         uncollect()
-        collectstate = false
+        collect_state = false
         self.showsMenu = !self.showsMenu//★ハンバーガー継承の場合
     }
     
     //ドラッグ移動
-    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override public func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         // タッチイベントを取得.
         let aTouch = touches.first
         // 移動した先の座標を取得.
-        let location = aTouch!.locationInView(viewCon.view)
+        let location = aTouch!.locationInView(view_con.view)
 
         for target in targets {
             if(target.button.frame.contains(location)){
@@ -163,7 +168,7 @@ class CollectButtonMenu: HamburgerButton{
     //配置する方向の決定
     func locateangle(i:Int) -> Double{
         var direction:Double = 0
-        if(LOCATE_TYPE == 0){
+        if(LOCATE_TYPE == locate_name.All){
             direction = 2*M_PI/Double(targets.count)*Double(i)
         }else{
             if(targets.count != 1){
@@ -174,24 +179,24 @@ class CollectButtonMenu: HamburgerButton{
         }
         //配置タイプによって処理
         switch LOCATE_TYPE {
-            case 1://Up
+            case locate_name.Up ://Up
                 direction = direction/2 + M_PI
-            case 2://Left
+            case locate_name.Left://Left
                 direction = direction/2 + M_PI/2
-            case 3://Right
+            case locate_name.Right://Right
                 direction = direction/2 + M_PI*1.5
                 if(direction > M_PI*2){
                     direction -= M_PI*2
                 }
-            case 4://Down
+            case locate_name.Down://Down
                 direction = direction/2
-            case 5://UpLeft
+            case locate_name.UpLeft://UpLeft
                 direction = direction/4 + M_PI
-            case 6://UpRight
+            case locate_name.UpRight://UpRight
                 direction = direction/4 + M_PI*1.5
-            case 7://DownLeft
+            case locate_name.DownLeft://DownLeft
                 direction = direction/4 + M_PI/2
-            case 8://DownRight
+            case locate_name.DownRight://DownRight
                 direction = direction/4
         default:
             break

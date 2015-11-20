@@ -10,7 +10,7 @@ import CoreGraphics
 import QuartzCore
 import UIKit
 
-class HamburgerButton : UIButton {
+public class HamburgerButton : UIButton {
     
     let shortStroke: CGPath = {
         let path = CGPathCreateMutable()
@@ -40,7 +40,7 @@ class HamburgerButton : UIButton {
     let hamburgerStrokeStart: CGFloat = 0.028
     let hamburgerStrokeEnd: CGFloat = 0.111
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
