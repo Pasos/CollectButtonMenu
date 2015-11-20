@@ -4,7 +4,7 @@
 
 集まってきたボタンの上でドラッグを離すとそのUIButtonの任意のタッチイベントを起こせる、UIButon拡張ライブラリです。
 
-今回はHumbergerButtonをオーバーライドして使っています。
+今回はHumbergerButtonを拡張してオーバーライドして使っています。
 
 http://robb.is/working-on/a-hamburger-button-transition/
 
@@ -34,7 +34,7 @@ remove(button :UIButton)
 
 - button:除外するボタン
 
-###定数
+###指定オプション
 
 - BUTTON_COLOR:UIColor
 
@@ -42,16 +42,24 @@ remove(button :UIButton)
 
   初期値:UIColor.redColor()
 
-- LOCATE_TYPE:Int
-
-  UIButtonの集まる方向
-
-  ["All":0, "Up":1, "Left":2, "Right":3, "Down":4, "UpLeft":5, "UpRight":6, "DownLeft":7, "DownRight":8]
-
-  初期値:0
-
 - NEAR_DISTANCE:Int:
 
   集まった時のUIBUttonとコレクトボタンメニューの距離[pixel]
 
   初期値:50
+
+- LOCATE_TYPE:locate_name
+  
+  UIButtonの集まる方向
+
+  初期値:locate_name.All
+### 定数
+  locate_name.All
+  locate_name.Up
+  locate_name.Left
+  locate_name.Right
+  locate_name.Down
+  locate_name.UpLeft
+  locate_name.UpRight
+  locate_name.DownLeft
+  locate_name.DownRight
