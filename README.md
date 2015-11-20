@@ -14,23 +14,23 @@ iphone端末拡大の世の生で指で簡単に触れる位置でボタンを�
 ##使い方
 
 ###初期化
-init(frame _frame:CGRect, color _color:UIColor, viewcontroller _viewCon:UIViewController )
+init(frame _frame:CGRect, color _color:UIColor, view_controller _view_controller:UIViewController )
 
 - frame:配置場所の指定。
 
 - color:ドラッグ時に変わるボタンの背景色
 
-- viewcontroller:配置されているUIViewController
+- view_controller:配置されているUIViewController
 
 ###グループにボタン追加
-add(button _button:UIButton, actiontype _actiontype:UIControlEvents)
+add(button _button:UIButton, actiontype _action_type:[UIControlEvents])
 
 - button:追加するボタン
-- actiontype:ドラッグを離した時に起こすイベントの種類
+- actiontype:ドラッグを離した時に起こすイベントの種類(配列で複数のイベント指定可能,配列の順に起こる)
 
 
 ###グループからボタン除外
-remove(button :UIButton)
+remove(button _button:UIButton)
 
 - button:除外するボタン
 
