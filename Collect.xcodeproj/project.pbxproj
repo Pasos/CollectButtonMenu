@@ -14,9 +14,8 @@
 		491767331BE4C62B00785E83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491767311BE4C62B00785E83 /* LaunchScreen.storyboard */; };
 		4917673E1BE4C62B00785E83 /* CollectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4917673D1BE4C62B00785E83 /* CollectTests.swift */; };
 		491767491BE4C62B00785E83 /* CollectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491767481BE4C62B00785E83 /* CollectUITests.swift */; };
-		49566A391BFED8B400BEAE2A /* CollectButtonMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49566A381BFED8B400BEAE2A /* CollectButtonMenu.swift */; };
-		49A3CB091BFA476D00431060 /* CollectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A3CB081BFA476D00431060 /* CollectButton.swift */; };
-		49B445731BFDD960002246DB /* Humberger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B445721BFDD960002246DB /* Humberger.swift */; };
+		49566A3E1BFEE6BD00BEAE2A /* CollectButtonMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49566A3C1BFEE6BD00BEAE2A /* CollectButtonMenu.swift */; };
+		49566A401BFEE75C00BEAE2A /* Humberger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49566A3F1BFEE75C00BEAE2A /* Humberger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,9 +50,8 @@
 		491767481BE4C62B00785E83 /* CollectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectUITests.swift; sourceTree = "<group>"; };
 		4917674A1BE4C62B00785E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		491767591BE4D0FC00785E83 /* Collect-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Collect-Bridging-Header.h"; sourceTree = "<group>"; };
-		49566A381BFED8B400BEAE2A /* CollectButtonMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectButtonMenu.swift; sourceTree = "<group>"; };
-		49A3CB081BFA476D00431060 /* CollectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectButton.swift; sourceTree = "<group>"; };
-		49B445721BFDD960002246DB /* Humberger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Humberger.swift; sourceTree = "<group>"; };
+		49566A3C1BFEE6BD00BEAE2A /* CollectButtonMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectButtonMenu.swift; sourceTree = "<group>"; };
+		49566A3F1BFEE75C00BEAE2A /* Humberger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Humberger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +86,7 @@
 				4917673C1BE4C62B00785E83 /* CollectTests */,
 				491767471BE4C62B00785E83 /* CollectUITests */,
 				491767261BE4C62B00785E83 /* Products */,
+				49566A3A1BFEE6BD00BEAE2A /* Souce */,
 				491767591BE4D0FC00785E83 /* Collect-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
@@ -106,13 +105,11 @@
 			isa = PBXGroup;
 			children = (
 				491767281BE4C62B00785E83 /* AppDelegate.swift */,
-				49A3CB071BFA473700431060 /* CollectButton */,
 				4917672A1BE4C62B00785E83 /* ViewController.swift */,
 				4917672C1BE4C62B00785E83 /* Main.storyboard */,
 				4917672F1BE4C62B00785E83 /* Assets.xcassets */,
 				491767311BE4C62B00785E83 /* LaunchScreen.storyboard */,
 				491767341BE4C62B00785E83 /* Info.plist */,
-				49B445721BFDD960002246DB /* Humberger.swift */,
 			);
 			path = Collect;
 			sourceTree = "<group>";
@@ -135,13 +132,13 @@
 			path = CollectUITests;
 			sourceTree = "<group>";
 		};
-		49A3CB071BFA473700431060 /* CollectButton */ = {
+		49566A3A1BFEE6BD00BEAE2A /* Souce */ = {
 			isa = PBXGroup;
 			children = (
-				49A3CB081BFA476D00431060 /* CollectButton.swift */,
-				49566A381BFED8B400BEAE2A /* CollectButtonMenu.swift */,
+				49566A3F1BFEE75C00BEAE2A /* Humberger.swift */,
+				49566A3C1BFEE6BD00BEAE2A /* CollectButtonMenu.swift */,
 			);
-			name = CollectButton;
+			path = Souce;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,11 +275,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49A3CB091BFA476D00431060 /* CollectButton.swift in Sources */,
-				49566A391BFED8B400BEAE2A /* CollectButtonMenu.swift in Sources */,
 				4917672B1BE4C62B00785E83 /* ViewController.swift in Sources */,
 				491767291BE4C62B00785E83 /* AppDelegate.swift in Sources */,
-				49B445731BFDD960002246DB /* Humberger.swift in Sources */,
+				49566A3E1BFEE6BD00BEAE2A /* CollectButtonMenu.swift in Sources */,
+				49566A401BFEE75C00BEAE2A /* Humberger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

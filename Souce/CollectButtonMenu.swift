@@ -9,14 +9,16 @@
 import Foundation
 import UIKit
 
-class CollectButton: HamburgerButton{
+class CollectButtonMenu: HamburgerButton{
     
     var targets:[TargetButton] = [] //集めるボタン格納
     var collectstate:Bool = false   //集めているかの状態
     var near_distance:CGFloat = 40  //どれぐらい近くに配置するか
+    var viewCon:UIViewController! = nil
     
-    override init(frame _frame:CGRect){
+    init(frame _frame:CGRect, viewcontroller _viewCon:UIViewController ){
         super.init(frame: _frame)
+        viewCon = _viewCon
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -26,10 +28,6 @@ class CollectButton: HamburgerButton{
     //集めるボタングループに追加
     func add(button _button:UIButton) {
         targets.append(TargetButton(button: _button))
-        //集めているなら再配置
-        if collectstate {
-            locate()
-        }
     }
     
     //集めるボタングループから除外&元の位置に戻す
@@ -38,18 +36,8 @@ class CollectButton: HamburgerButton{
         for target in targets {
             if target.button == _button {
                 targets.removeAtIndex(i)
-                UIView.animateWithDuration(1, // アニメーションの時間
-                    animations: {() -> Void  in
-                        // アニメーションする処理
-                        target.button.layer.position.x = target.origin_x
-                        target.button.layer.position.y = target.origin_y
-                })
             }
             i += 1
-        }
-        //集めているなら再配置
-        if collectstate {
-            locate()
         }
     }
     
@@ -62,17 +50,61 @@ class CollectButton: HamburgerButton{
         }
         return false
     }
-
     
+    //タッチイベント
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if(collectstate){
-            uncollect()
-        }else{
-            collect()
-        }
-        collectstate = !collectstate
+        collect()
+        collectstate = true
         self.showsMenu = !self.showsMenu//★ハンバーガー継承の場合
     }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        // タッチイベントを取得.
+        let aTouch = touches.first
+        // 移動した先の座標を取得.
+        let location = aTouch!.locationInView(viewCon.view)
+        for target in targets {
+            //ボタンのタッチ関数呼び出し
+            if(target.button.frame.contains(location)){
+                target.button.sendActionsForControlEvents(.TouchUpInside)//
+            }
+            //ボタンの形を元に戻す。
+            target.button.transform = CGAffineTransformMakeScale(1, 1);
+            target.button.backgroundColor = UIColor.greenColor()
+        }
+        //ボタンを元の位置に戻す。
+        uncollect()
+        collectstate = false
+        self.showsMenu = !self.showsMenu//★ハンバーガー継承の場合
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        
+        // タッチイベントを取得.
+        let aTouch = touches.first
+        // 移動した先の座標を取得.
+        let location = aTouch!.locationInView(viewCon.view)
+
+        for target in targets {
+            if(target.button.frame.contains(location)){
+                UIView.animateWithDuration(0.3, // アニメーションの時間
+                    animations: {() -> Void  in
+                        // アニメーションする処理
+                        target.button.transform = CGAffineTransformMakeScale(1.3, 1.3);
+                        target.button.backgroundColor = UIColor.redColor()
+                })
+            }else{
+                UIView.animateWithDuration(0.3, // アニメーションの時間
+                    animations: {() -> Void  in
+                        // アニメーションする処理
+                        target.button.transform = CGAffineTransformMakeScale(1, 1);
+                        target.button.backgroundColor = UIColor.greenColor()
+                })
+            }
+        }
+        
+    }
+    
     
     //コレクトボタン近くにターゲットボタンを集める
     func collect(){
@@ -88,7 +120,7 @@ class CollectButton: HamburgerButton{
     //元の座標に戻す
     func uncollect(){
         for target in targets {
-            UIView.animateWithDuration(1, // アニメーションの時間
+            UIView.animateWithDuration(0.8, // アニメーションの時間
                 animations: {() -> Void  in
                     // アニメーションする処理
                     target.button.layer.position.x = target.origin_x
@@ -105,11 +137,11 @@ class CollectButton: HamburgerButton{
         let size = targets.count
         var i = 0
         for target in targets {
-            UIView.animateWithDuration(1, // アニメーションの時間
+            UIView.animateWithDuration(0.8, // アニメーションの時間
                 animations: {() -> Void  in
                     // アニメーションする処理
-                    target.button.layer.position.x = self.layer.position.x + self.near_distance*CGFloat(cos(2*M_PI/Double(size)*Double(i) + M_PI))
-                    target.button.layer.position.y = self.layer.position.y + self.near_distance*CGFloat(sin(2*M_PI/Double(size)*Double(i) + M_PI))
+                    target.button.layer.position.x = self.layer.position.x + self.near_distance*CGFloat(cos(2*M_PI/Double(size)*Double(i)))
+                    target.button.layer.position.y = self.layer.position.y + self.near_distance*CGFloat(sin(2*M_PI/Double(size)*Double(i)))
             })
             i += 1
         }
@@ -138,7 +170,7 @@ class CollectButton: HamburgerButton{
         return 0
     }
 }
-/*
+
 class TargetButton {
     
     var button:UIButton
@@ -152,4 +184,3 @@ class TargetButton {
     }
     
 }
-*/

@@ -17,14 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsG-Xk-tRc">
-                                <rect key="frame" x="263" y="191" width="30" height="30"/>
-                                <color key="backgroundColor" red="0.11478173640834977" green="1" blue="0.47359341223503759" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="B1"/>
-                                <connections>
-                                    <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c3Z-Zz-VyZ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pn-Ml-vuf">
                                 <rect key="frame" x="42" y="496" width="30" height="30"/>
                                 <color key="backgroundColor" red="0.1147817364" green="1" blue="0.47359341220000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -71,8 +63,30 @@
                                     <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qUX-tu-CmW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ボタン名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn8-kl-M3p">
+                                <rect key="frame" x="153" y="40" width="68" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="N6u-lP-6PF"/>
+                                    <constraint firstAttribute="height" constant="35" id="ZQm-W5-BV5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsG-Xk-tRc">
+                                <rect key="frame" x="263" y="191" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.11478173640834977" green="1" blue="0.47359341223503759" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="B1"/>
+                                <connections>
+                                    <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c3Z-Zz-VyZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bn8-kl-M3p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="4aA-WP-E5g"/>
+                            <constraint firstItem="bn8-kl-M3p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O6Q-86-QoZ"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -82,6 +96,7 @@
                         <outlet property="b4Button" destination="8pn-Ml-vuf" id="ofQ-Bi-lWA"/>
                         <outlet property="b5Button" destination="S4q-Pw-lCA" id="hSV-g2-zMK"/>
                         <outlet property="b6Button" destination="D1O-kq-len" id="Idy-A1-ked"/>
+                        <outlet property="showNameLabel" destination="bn8-kl-M3p" id="9CR-RC-3Ks"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
