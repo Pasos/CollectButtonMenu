@@ -55,11 +55,19 @@ remove(button _button:UIButton)
   初期値:locate_name.All
 ### 定数
   locate_name.All
+  
   locate_name.Up
+  
   locate_name.Left
+  
   locate_name.Right
+  
   locate_name.Down
+  
   locate_name.UpLeft
+  
   locate_name.UpRight
+  
   locate_name.DownLeft
+  
   locate_name.DownRight
