@@ -26,7 +26,7 @@ init(frame _frame:CGRect, color _color:UIColor, viewcontroller _viewCon:UIViewCo
 add(button _button:UIButton, actiontype _actiontype:UIControlEvents)
 
 - button:追加するボタン
-- actiontype:ドラッグを離した時に
+- actiontype:ドラッグを離した時に起こすイベントの種類
 
 
 ###グループからボタン除外
