@@ -11,9 +11,10 @@ import UIKit
 
 class CollectButtonMenu: HamburgerButton{
     
-    var targets:[TargetButton] = [] //集めるボタン格納
-    var collectstate:Bool = false   //集めているかの状態
-    var near_distance:CGFloat = 40  //どれぐらい近くに配置するか
+    var targets:[TargetButton] = []                     //集めるボタン格納
+    var collectstate:Bool = false                       //集めているかの状態
+    var near_distance:CGFloat = 40                      //どれぐらい近くに配置するか
+    var locatetype:Int = 0 //["All":0, "Up":1, "Left":2, "Right":3, "Down":4, "UpLeft":5, "UpRight":6, "DownLeft":7, "DownRight":8]//配置するタイプ
     var viewCon:UIViewController! = nil
     
     init(frame _frame:CGRect, viewcontroller _viewCon:UIViewController ){
@@ -26,11 +27,11 @@ class CollectButtonMenu: HamburgerButton{
     }
     
     //集めるボタングループに追加
-    func add(button _button:UIButton) {
+    func add(button _button:UIButton, actiontype _actiontype:UIControlEvents) {
         targets.append(TargetButton(button: _button))
     }
     
-    //集めるボタングループから除外&元の位置に戻す
+    //集めるボタングループから除外
     func remove(button _button:UIButton){
         var i = 0
         for target in targets {
@@ -67,10 +68,18 @@ class CollectButtonMenu: HamburgerButton{
             //ボタンのタッチ関数呼び出し
             if(target.button.frame.contains(location)){
                 target.button.sendActionsForControlEvents(.TouchUpInside)//
+                UIView.animateWithDuration(0.3, delay: 0.8, options: UIViewAnimationOptions(),                    animations: {() -> Void  in
+                        target.button.transform = CGAffineTransformMakeScale(1, 1);
+                        target.button.backgroundColor = UIColor.greenColor()
+                    }
+                    ,completion: {(finished: Bool) -> Void in
+                    }
+                )
+            }else{
+                //ボタンの形を元に戻す。
+                target.button.transform = CGAffineTransformMakeScale(1, 1);
+                target.button.backgroundColor = UIColor.greenColor()
             }
-            //ボタンの形を元に戻す。
-            target.button.transform = CGAffineTransformMakeScale(1, 1);
-            target.button.backgroundColor = UIColor.greenColor()
         }
         //ボタンを元の位置に戻す。
         uncollect()
@@ -129,45 +138,53 @@ class CollectButtonMenu: HamburgerButton{
         }
     }
     
-    //ボタンを集める
+    //ボタンを集める関数本体
     func locate(){
-        //配置方法を決める
-        //let type = locate()
-        
-        let size = targets.count
+        //配置方法によって分岐(未実装)
         var i = 0
         for target in targets {
             UIView.animateWithDuration(0.8, // アニメーションの時間
                 animations: {() -> Void  in
                     // アニメーションする処理
-                    target.button.layer.position.x = self.layer.position.x + self.near_distance*CGFloat(cos(2*M_PI/Double(size)*Double(i)))
-                    target.button.layer.position.y = self.layer.position.y + self.near_distance*CGFloat(sin(2*M_PI/Double(size)*Double(i)))
+                    target.button.layer.position.x = self.layer.position.x + self.near_distance*CGFloat(cos(self.locateangle(i)))
+                    target.button.layer.position.y = self.layer.position.y + self.near_distance*CGFloat(sin(self.locateangle(i)))
             })
             i += 1
         }
     }
     
-    
-    //コレクトボタンの位置によって配置の仕方のタイプを返す(未実装)
-    func locatetype() -> Int {
-        /*
-        var position = 0
-        if(self.frame.origin.x + self.frame.width > UIScreen.mainScreen().bounds.width*9/10){
-        position = 0
-        }else if(self.frame.origin.x < UIScreen.mainScreen().bounds.width/10 ){
-        position = 1
+    func locateangle(i:Int) -> Double{
+        var direction:Double = 0
+        if(locatetype == 0){
+            direction = 2*M_PI/Double(targets.count)*Double(i)
         }else{
-        position = 2
+            direction = 2*M_PI/Double(targets.count - 1)*Double(i)
         }
-        if(self.frame.origin.y + self.frame.height > UIScreen.mainScreen().bounds.height*9/10){
-        position += 0
-        }else if(self.frame.origin.y < UIScreen.mainScreen().bounds.height/10 ){
-        position += 3
-        }else{
-        position += 6
+
+        switch locatetype {
+            case 1://Up
+                direction = direction/2 + M_PI
+            case 2://Left
+                direction = direction/2 + M_PI/2
+            case 3://Right
+                direction = direction/2 + M_PI*1.5
+                if(direction > M_PI*2){
+                    direction -= M_PI*2
+                }
+            case 4://Down
+                direction = direction/2
+            case 5://UpLeft
+                direction = direction/4 + M_PI
+            case 6://UpRight
+                direction = direction/4 + M_PI*1.5
+            case 7://DownLeft
+                direction = direction/4 + M_PI/2
+            case 8://DownRight
+                direction = direction/4
+        default:
+            break
         }
-        */
-        return 0
+        return direction
     }
 }
 

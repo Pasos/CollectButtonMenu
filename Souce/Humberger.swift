@@ -52,7 +52,7 @@ class HamburgerButton : UIButton {
         
         for layer in [ self.top, self.middle, self.bottom ] {
             layer.fillColor = nil
-            layer.strokeColor = UIColor.blueColor().CGColor
+            layer.strokeColor = UIColor.redColor().CGColor
             layer.lineWidth = 4
             layer.miterLimit = 4
             layer.lineCap = kCALineCapRound

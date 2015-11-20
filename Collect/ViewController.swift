@@ -22,15 +22,17 @@ class ViewController: UIViewController {
         roundedButton(button: b5Button)
         roundedButton(button: b6Button)
         
-        collectBM = CollectButtonMenu(frame: CGRectMake(self.view.frame.width/2, 500, 50, 50), viewcontroller: self)
+        collectBM = CollectButtonMenu(frame: CGRectMake(300, 550, 50, 50), viewcontroller: self)
         self.view.addSubview(collectBM)
+        collectBM.locatetype = 5
+        collectBM.near_distance = 100
         
-        collectBM.add(button: b1Button)
-        collectBM.add(button: b2Button)
-        collectBM.add(button: b3Button)
-        collectBM.add(button: b4Button)
-        collectBM.add(button: b5Button)
-        collectBM.add(button: b6Button)
+        collectBM.add(button: b1Button, actiontype: UIControlEvents.TouchUpInside)
+        collectBM.add(button: b2Button, actiontype: UIControlEvents.TouchUpInside)
+        collectBM.add(button: b3Button, actiontype: UIControlEvents.TouchUpInside)
+        collectBM.add(button: b4Button, actiontype: UIControlEvents.TouchUpInside)
+        collectBM.add(button: b5Button, actiontype: UIControlEvents.TouchUpInside)
+        collectBM.add(button: b6Button, actiontype: UIControlEvents.TouchUpInside)
     }
 
     override func didReceiveMemoryWarning() {
