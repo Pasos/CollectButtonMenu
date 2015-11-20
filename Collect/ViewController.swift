@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         roundedButton(button: b6Button)
         
         collectBM1 = CollectButtonMenu(frame: CGRectMake(310, 600, 50, 50), color: UIColor.purpleColor(), viewcontroller: self)
-        collectBM1.LOCATE_TYPE = 5
+        collectBM1.setLocateType("UpLeft")
         collectBM1.NEAR_DISTANCE = 50
         collectBM1.add(button: b1Button, actiontype: UIControlEvents.TouchUpInside)
         collectBM1.add(button: b2Button, actiontype: UIControlEvents.TouchUpInside)
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         self.view.addSubview(collectBM1)
         
         collectBM2 = CollectButtonMenu(frame: CGRectMake(310, 400, 50, 50), color: UIColor.redColor(), viewcontroller: self)
-        collectBM2.LOCATE_TYPE = 2
+        collectBM2.setLocateType("Left")
         collectBM2.NEAR_DISTANCE = 70
         collectBM2.add(button: b4Button, actiontype: UIControlEvents.TouchUpInside)
         collectBM2.add(button: b5Button, actiontype: UIControlEvents.TouchUpInside)
