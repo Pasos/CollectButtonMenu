@@ -40,18 +40,18 @@ remove(button :UIButton)
 
   ドラッグ時に染める色
 
-+　初期値:UIColor.redColor()
+  初期値:UIColor.redColor()
 
 - LOCATE_TYPE:Int
 
   UIButtonの集まる方向
 
-["All":0, "Up":1, "Left":2, "Right":3, "Down":4, "UpLeft":5, "UpRight":6, "DownLeft":7, "DownRight":8]
+  ["All":0, "Up":1, "Left":2, "Right":3, "Down":4, "UpLeft":5, "UpRight":6, "DownLeft":7, "DownRight":8]
 
-+　初期値:0
+  初期値:0
 
 - NEAR_DISTANCE:Int:
 
   集まった時のUIBUttonとコレクトボタンメニューの距離[pixel]
 
-+　初期値:50
+  初期値:50
