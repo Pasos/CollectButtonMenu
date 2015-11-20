@@ -158,7 +158,11 @@ class CollectButtonMenu: HamburgerButton{
         if(locatetype == 0){
             direction = 2*M_PI/Double(targets.count)*Double(i)
         }else{
-            direction = 2*M_PI/Double(targets.count - 1)*Double(i)
+            if(targets.count != 1){
+                direction = 2*M_PI/Double(targets.count-1)*Double(i)
+            }else{
+                direction = 2*M_PI/Double(targets.count+1)*Double(i+1)
+            }
         }
 
         switch locatetype {

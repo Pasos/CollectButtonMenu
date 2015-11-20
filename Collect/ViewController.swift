@@ -10,8 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var collectBM:CollectButtonMenu!
-
+    var collectBM1:CollectButtonMenu!
+    var collectBM2:CollectButtonMenu!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,17 +23,23 @@ class ViewController: UIViewController {
         roundedButton(button: b5Button)
         roundedButton(button: b6Button)
         
-        collectBM = CollectButtonMenu(frame: CGRectMake(300, 550, 50, 50), viewcontroller: self)
-        self.view.addSubview(collectBM)
-        collectBM.locatetype = 5
-        collectBM.near_distance = 100
+        collectBM1 = CollectButtonMenu(frame: CGRectMake(310, 600, 50, 50), viewcontroller: self)
+        collectBM1.locatetype = 5
+        collectBM1.near_distance = 50
+        collectBM1.add(button: b1Button, actiontype: UIControlEvents.TouchUpInside)
+        collectBM1.add(button: b2Button, actiontype: UIControlEvents.TouchUpInside)
+        collectBM1.add(button: b3Button, actiontype: UIControlEvents.TouchUpInside)
+        self.view.addSubview(collectBM1)
         
-        collectBM.add(button: b1Button, actiontype: UIControlEvents.TouchUpInside)
-        collectBM.add(button: b2Button, actiontype: UIControlEvents.TouchUpInside)
-        collectBM.add(button: b3Button, actiontype: UIControlEvents.TouchUpInside)
-        collectBM.add(button: b4Button, actiontype: UIControlEvents.TouchUpInside)
-        collectBM.add(button: b5Button, actiontype: UIControlEvents.TouchUpInside)
-        collectBM.add(button: b6Button, actiontype: UIControlEvents.TouchUpInside)
+        collectBM2 = CollectButtonMenu(frame: CGRectMake(310, 400, 50, 50), viewcontroller: self)
+        collectBM2.locatetype = 2
+        collectBM2.near_distance = 50
+        collectBM2.add(button: b1Button, actiontype: UIControlEvents.TouchUpInside)
+        collectBM2.add(button: b2Button, actiontype: UIControlEvents.TouchUpInside)
+        collectBM2.add(button: b3Button, actiontype: UIControlEvents.TouchUpInside)
+        collectBM2.add(button: b4Button, actiontype: UIControlEvents.TouchUpInside)
+        collectBM2.add(button: b5Button, actiontype: UIControlEvents.TouchUpInside)
+        self.view.addSubview(collectBM2)
     }
 
     override func didReceiveMemoryWarning() {
