@@ -1,7 +1,7 @@
 #CollectButtonMenu
 
 CollectButtonMenu collect some grouped UIButton arround the CollectButtonMenu, if a user touch down the Button.
-And if the user drag and touch up in the UIButton, TouchEvent for the UIButton happen.
+And if the user drag and touch up in the UIButton, TouchEvent for the UIButton occur.
 
 A display use HumbergerButton
 
@@ -26,14 +26,14 @@ init(frame _frame:CGRect, color _color:UIColor, view_controller _view_controller
 ###add a UIButton in a group collected by CollectButtonMenu
 add(button _button:UIButton, actiontype _action_type:[UIControlEvents])
 
-- button:追加するボタン
-- actiontype:ドラッグを離した時に起こすイベントの種類(配列で複数のイベント指定可能,配列の順に起こる)
+- button: a UIButton added in the group
+- actiontype: a occured TouchEvent when the touch up inside the UIButton (multi TouchEvents avaiable.TouchEvents occur in order based on array)
 
 
 ###remove a UIButton from the group
 remove(button _button:UIButton)
 
-- button:除外するボタン
+- button: a UIButton removed from the group
 
 ###Option
 
