@@ -1,59 +1,60 @@
 #CollectButtonMenu
 
-コレクトボタンメニューをドラッグするとグループに入れたUIButtonがコレクトボタンメニューの周りに集まってきて
+CollectButtonMenu collect some grouped UIButton arround the CollectButtonMenu, if a user touch down the Button.
+And if the user drag and touch up in the UIButton, TouchEvent for the UIButton happen.
 
-集まってきたボタンの上でドラッグを離すとそのUIButtonの任意のタッチイベントを起こせる、UIButon拡張ライブラリです。
-
-今回はHumbergerButtonを拡張してオーバーライドして使っています。
+A display use HumbergerButton
 
 http://robb.is/working-on/a-hamburger-button-transition/
 
-##背景
-iphone端末拡大の世の生で指で簡単に触れる位置でボタンをタッチしたいというニーズがあると思って作りました
+##Concept
+In the Latest, iphone device gets bigger.
+So, User can't touch the Button easily with one hand control.
+I want to touch all button easily near a thumb.
 
-##使い方
+##How to Use
 
-###初期化
+###initialize
 init(frame _frame:CGRect, color _color:UIColor, view_controller _view_controller:UIViewController )
 
-- frame:配置場所の指定。
+- frame: Position of CollectButtonMenu
 
-- color:ドラッグ時に変わるボタンの背景色
+- color: BackGroundColor of CollectButtonMenu and grouped UIButtons when a user drag the UIButton.
 
-- view_controller:配置されているUIViewController
+- view_controller: UIViewController the CollectButtonMenu is located in.
 
-###グループにボタン追加
+###add a UIButton in a group collected by CollectButtonMenu
 add(button _button:UIButton, actiontype _action_type:[UIControlEvents])
 
 - button:追加するボタン
 - actiontype:ドラッグを離した時に起こすイベントの種類(配列で複数のイベント指定可能,配列の順に起こる)
 
 
-###グループからボタン除外
+###remove a UIButton from the group
 remove(button _button:UIButton)
 
 - button:除外するボタン
 
-###指定オプション
+###Option
 
 - BUTTON_COLOR:UIColor
 
-  ドラッグ時に染める色
+  The BackGroundColor when a user drag a grouped UIButton
 
-  初期値:UIColor.redColor()
+  initial value:UIColor.redColor()
 
 - NEAR_DISTANCE:Int:
 
-  集まった時のUIBUttonとコレクトボタンメニューの距離[pixel]
+  A distance between CollectButtonMenu and grouped UIBUttons when the UIButtons are collected [pixel]
 
-  初期値:50
+  initial value:50
 
 - LOCATE_TYPE:locate_name
   
-  UIButtonの集まる方向
+  a direction where UIButton locate
 
-  初期値:locate_name.All
-### 定数
+  initial value:locate_name.All
+### locate_name
   locate_name.All
   
   locate_name.Up
@@ -66,7 +67,7 @@ remove(button _button:UIButton)
   
   locate_name.UpLeft
   
-  locate_name.UpRight
+  locate_name.UpRight 
   
   locate_name.DownLeft
   
