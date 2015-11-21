@@ -23,7 +23,7 @@ init(frame _frame:CGRect, color _color:UIColor, view_controller _view_controller
 
 - view_controller: UIViewController the CollectButtonMenu is located in.
 
-###add a UIButton in a group collected by CollectButtonMenu
+###add a UIButton in the group
 add(button _button:UIButton, actiontype _action_type:[UIControlEvents])
 
 - button: a UIButton added in the group
