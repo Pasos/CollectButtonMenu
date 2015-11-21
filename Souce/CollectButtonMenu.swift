@@ -120,6 +120,7 @@ public class CollectButtonMenu: HamburgerButton{
                         target.button.transform = CGAffineTransformMakeScale(1.3, 1.3);
                         target.button.backgroundColor = self.BUTTON_COLOR
                 })
+                target.button.layer.zPosition = 1
             }else{
                 //それ以外ののボタン
                 UIView.animateWithDuration(0.3,
@@ -127,6 +128,7 @@ public class CollectButtonMenu: HamburgerButton{
                         target.button.transform = CGAffineTransformMakeScale(1, 1);
                         target.button.backgroundColor = target.origin_color
                 })
+                target.button.layer.zPosition = 0
             }
         }
         
@@ -135,10 +137,11 @@ public class CollectButtonMenu: HamburgerButton{
     
     //コレクトボタン近くにターゲットボタンを集める
     func collect(){
-        //ボタンの元の位置記録
+        //ボタンの元の情報記録
         for target in targets {
             target.origin_point.x = target.button.layer.position.x
             target.origin_point.y = target.button.layer.position.y
+            target.origin_zpoint = target.button.layer.zPosition
             if let color = target.button.backgroundColor {
                 target.origin_color = color
             }else{
@@ -164,6 +167,7 @@ public class CollectButtonMenu: HamburgerButton{
                 animations: {() -> Void  in
                     target.button.layer.position = target.origin_point
             })
+            target.button.layer.zPosition = target.origin_zpoint
         }
     }
     
@@ -212,11 +216,13 @@ class TargetButton {
     var button:UIButton                //ボタン本体
     var origin_point:CGPoint           //元の座標
     var origin_color:UIColor           //元の背景色
+    var origin_zpoint:CGFloat          //元のZ座標
     var action_events:[UIControlEvents]//起こすタッチアクション
     
     init(button _button:UIButton, action_event _action_event:[UIControlEvents]){
         button = _button
         origin_point = _button.layer.position
+        origin_zpoint = _button.layer.zPosition
         if let color = _button.backgroundColor {
             origin_color = color
         }else{

@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         roundedButton(buttons: [b1Button,b2Button,b3Button,b4Button,b5Button,b6Button])
         
-        collectBM1 = CollectButtonMenu(frame: CGRectMake(310, 400, 50, 50), color: UIColor.redColor(), view_controller: self)
+        collectBM1 = CollectButtonMenu(frame: CGRectMake(UIScreen.mainScreen().bounds.size.width-60, UIScreen.mainScreen().bounds.size.height*2/3, 50, 50), color: UIColor.redColor(), view_controller: self)
         collectBM1.LOCATE_TYPE = CollectButtonMenu.locate_name.Left
         collectBM1.NEAR_DISTANCE = 70
         collectBM1.add(button: b4Button, actiontype: [UIControlEvents.TouchUpInside])
@@ -25,9 +25,9 @@ class ViewController: UIViewController {
         collectBM1.add(button: b6Button, actiontype: [UIControlEvents.TouchUpInside])
         self.view.addSubview(collectBM1)
         
-        collectBM2 = CollectButtonMenu(frame: CGRectMake(310, 600, 50, 50), color: UIColor.purpleColor(), view_controller: self)
+        collectBM2 = CollectButtonMenu(frame: CGRectMake(UIScreen.mainScreen().bounds.size.width-60, UIScreen.mainScreen().bounds.size.height-60, 50, 50), color: UIColor.purpleColor(), view_controller: self)
         collectBM2.LOCATE_TYPE = CollectButtonMenu.locate_name.UpLeft
-        collectBM2.NEAR_DISTANCE = 50
+        collectBM2.NEAR_DISTANCE = 70
         collectBM2.add(button: b1Button, actiontype: [UIControlEvents.TouchDown, UIControlEvents.TouchUpInside])
         collectBM2.add(button: b2Button, actiontype: [UIControlEvents.TouchDown, UIControlEvents.TouchUpInside])
         collectBM2.add(button: b3Button, actiontype: [UIControlEvents.TouchDown, UIControlEvents.TouchUpInside])
