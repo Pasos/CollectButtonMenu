@@ -18,12 +18,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsG-Xk-tRc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsG-Xk-tRc">
                                 <rect key="frame" x="20" y="20" width="30" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="←"/>
                                 <connections>
-                                    <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c3Z-Zz-VyZ"/>
+                                    <action selector="ButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7I8-8p-gps"/>
+                                    <action selector="ButtonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="kHa-4O-5XZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pn-Ml-vuf">
@@ -34,7 +35,7 @@
                                 </constraints>
                                 <state key="normal" title="カメラ"/>
                                 <connections>
-                                    <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oge-e0-wx8"/>
+                                    <action selector="ButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EIW-j9-hNo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4q-Pw-lCA">
@@ -42,17 +43,18 @@
                                 <color key="backgroundColor" red="0.1147817364" green="1" blue="0.47359341220000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="写真"/>
                                 <connections>
-                                    <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OdN-8N-35P"/>
+                                    <action selector="ButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8uM-iz-Ky4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIA-uR-whZ">
                                 <rect key="frame" x="172" y="20" width="30" height="30"/>
                                 <state key="normal" title="▶️"/>
                                 <connections>
-                                    <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="li7-56-kZM"/>
+                                    <action selector="ButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pSY-ug-83N"/>
+                                    <action selector="ButtonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="QCh-ee-mJs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATc-9Q-aXh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATc-9Q-aXh">
                                 <rect key="frame" x="325" y="20" width="30" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="→"/>
@@ -63,19 +65,20 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qUX-tu-CmW"/>
+                                    <action selector="ButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5cT-qb-Vz3"/>
+                                    <action selector="ButtonTouchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="wd5-7D-J6A"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ボタン名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn8-kl-M3p">
-                                <rect key="frame" x="117" y="93" width="140" height="57"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touched Button" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn8-kl-M3p">
+                                <rect key="frame" x="82" y="305" width="211" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="4hE-BV-fhK"/>
-                                    <constraint firstAttribute="width" constant="140" id="58h-Xb-r41"/>
                                     <constraint firstAttribute="height" constant="57" id="JyD-RI-rhx"/>
                                     <constraint firstAttribute="width" constant="68" id="N6u-lP-6PF"/>
-                                    <constraint firstAttribute="height" constant="57" id="N7y-OX-RoL"/>
                                     <constraint firstAttribute="height" constant="35" id="ZQm-W5-BV5"/>
+                                    <constraint firstAttribute="height" constant="57" id="eFQ-Bc-Loy"/>
                                     <constraint firstAttribute="width" constant="140" id="jgI-yG-fxd"/>
+                                    <constraint firstAttribute="width" constant="211" id="o2e-gT-l8y"/>
                                     <constraint firstAttribute="height" constant="57" id="sBs-1h-Cll"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -100,28 +103,38 @@
                                 </constraints>
                                 <state key="normal" title="ムービー"/>
                                 <connections>
-                                    <action selector="RemoveButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hRK-RA-26a"/>
+                                    <action selector="ButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bRV-It-fOE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TouchDown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYe-c0-YVI">
+                                <rect key="frame" x="123" y="64" width="129" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="S4q-Pw-lCA" firstAttribute="baseline" secondItem="8pn-Ml-vuf" secondAttribute="baseline" id="23V-hY-Icv"/>
                             <constraint firstItem="bn8-kl-M3p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="76" id="2Db-Ou-6N6"/>
+                            <constraint firstItem="TsG-Xk-tRc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="4ED-fC-HXd"/>
                             <constraint firstItem="bn8-kl-M3p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="4aA-WP-E5g"/>
-                            <constraint firstItem="bn8-kl-M3p" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="93" id="8ar-eo-2EU"/>
+                            <constraint firstItem="bn8-kl-M3p" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6wW-CB-i6b"/>
                             <constraint firstAttribute="bottom" secondItem="D1O-kq-len" secondAttribute="bottom" constant="20" symbolic="YES" id="8eV-pu-LU5"/>
+                            <constraint firstItem="ATc-9Q-aXh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="A29-TP-tNI"/>
                             <constraint firstItem="S4q-Pw-lCA" firstAttribute="leading" secondItem="8pn-Ml-vuf" secondAttribute="trailing" constant="20" id="Gze-eg-Yrn"/>
                             <constraint firstItem="bn8-kl-M3p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O6Q-86-QoZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ATc-9Q-aXh" secondAttribute="trailing" constant="4" id="Oav-Ab-ZnS"/>
+                            <constraint firstItem="VIA-uR-whZ" firstAttribute="baseline" secondItem="ATc-9Q-aXh" secondAttribute="baseline" id="PiH-WQ-vDE"/>
+                            <constraint firstItem="VIA-uR-whZ" firstAttribute="centerX" secondItem="bn8-kl-M3p" secondAttribute="centerX" id="Pwe-R0-3Fc"/>
                             <constraint firstItem="S4q-Pw-lCA" firstAttribute="baseline" secondItem="D1O-kq-len" secondAttribute="baseline" id="QHt-j2-TW7"/>
                             <constraint firstItem="bn8-kl-M3p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Szg-kT-BXA"/>
-                            <constraint firstItem="bn8-kl-M3p" firstAttribute="top" secondItem="VIA-uR-whZ" secondAttribute="bottom" constant="43" id="Zsm-G9-iQ5"/>
                             <constraint firstItem="8pn-Ml-vuf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="14" id="fc8-sy-jbg"/>
+                            <constraint firstItem="bn8-kl-M3p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k3t-WH-Iqa"/>
                             <constraint firstItem="D1O-kq-len" firstAttribute="leading" secondItem="S4q-Pw-lCA" secondAttribute="trailing" constant="17" id="njH-a6-LEc"/>
-                            <constraint firstItem="bn8-kl-M3p" firstAttribute="centerX" secondItem="VIA-uR-whZ" secondAttribute="centerX" id="ohA-0u-dtE"/>
                             <constraint firstItem="D1O-kq-len" firstAttribute="top" secondItem="bn8-kl-M3p" secondAttribute="bottom" constant="93" id="ojv-L0-uWM"/>
-                            <constraint firstItem="bn8-kl-M3p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="plx-P3-BUb"/>
                             <constraint firstItem="bn8-kl-M3p" firstAttribute="leading" secondItem="D1O-kq-len" secondAttribute="leading" id="rfM-W9-HiK"/>
+                            <constraint firstItem="TsG-Xk-tRc" firstAttribute="baseline" secondItem="VIA-uR-whZ" secondAttribute="baseline" id="vCC-AC-YFU"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -143,6 +156,7 @@
                         <outlet property="b5Button" destination="S4q-Pw-lCA" id="hSV-g2-zMK"/>
                         <outlet property="b6Button" destination="D1O-kq-len" id="Idy-A1-ked"/>
                         <outlet property="showNameLabel" destination="bn8-kl-M3p" id="9CR-RC-3Ks"/>
+                        <outlet property="touchDownLabel" destination="VYe-c0-YVI" id="3gA-gL-Ni8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
