@@ -15,7 +15,7 @@ I want to touch all button easily near a thumb.
 ##How to Use
 
 ###initialize
-init(frame _frame:CGRect, color _color:UIColor, view_controller _view_controller:UIViewController )
+init(frame: CGRect, color: UIColor, view_controller: UIViewController)
 
 - frame: Position of CollectButtonMenu
 
@@ -24,14 +24,14 @@ init(frame _frame:CGRect, color _color:UIColor, view_controller _view_controller
 - view_controller: UIViewController the CollectButtonMenu is located in.
 
 ###add a UIButton in the group
-add(button _button:UIButton, actiontype _action_type:[UIControlEvents])
+add(button: UIButton, actiontype: [UIControlEvents])
 
 - button: a UIButton added in the group
 - actiontype: a occured TouchEvent when the touch up inside the UIButton (multi TouchEvents avaiable.TouchEvents occur in order based on array)
 
 
 ###remove a UIButton from the group
-remove(button _button:UIButton)
+remove(button: UIButton)
 
 - button: a UIButton removed from the group
 
